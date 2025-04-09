@@ -1,0 +1,18 @@
+{
+  "name": "api-doc-oms",
+  "version": "1.0.0",
+  "description": "Api para documentar las oms por parte del personal de mantenimiento",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fausto gomez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0"
+  }
+}
