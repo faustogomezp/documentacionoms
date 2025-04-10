@@ -18,6 +18,17 @@ class ordenesModelo {
         return await colOrdenes.findOne({ _id: new ObjectId(id)});
     }
 
+    async update(id, orden) {
+        const colOrdenes = dbClient.db.collection('ordenes');
+        return await colOrdenes.updateOne({ _id: new ObjectId(id)}, {$set: orden});
+    }
+
+    async delete(id) {
+        const colOrdenes = dbClient.db.collection('ordenes');
+        return await colOrdenes.deleteOne({ _id: new ObjectId(id)});
+    }
+
+
 }
 
 export default new ordenesModelo;
