@@ -1,31 +1,25 @@
-import { ObjectId } from "mongodb";
-import dbClient from "../config/dbClient.js";
+import OrdenMantenimiento from '../schemas/ordenesMantenimiento.js'
 
 class ordenesModelo {
 
     async create(orden) {
-        const colOrdenes = dbClient.db.collection('ordenes');
-        return await colOrdenes.insertOne(orden);
+        return await OrdenMantenimiento.create(orden);
     }
 
     async getAll() {
-        const colOrdenes = dbClient.db.collection('ordenes');
-        return await colOrdenes.find({}).toArray();
+        return await OrdenMantenimiento.find();
     }
 
     async getOne(id) {
-        const colOrdenes = dbClient.db.collection('ordenes');
-        return await colOrdenes.findOne({ _id: new ObjectId(id)});
+        return await OrdenMantenimiento.findById(id);
     }
 
     async update(id, orden) {
-        const colOrdenes = dbClient.db.collection('ordenes');
-        return await colOrdenes.updateOne({ _id: new ObjectId(id)}, {$set: orden});
+        return await OrdenMantenimiento.findOneAndUpdate(id, orden, {new: true});
     }
 
     async delete(id) {
-        const colOrdenes = dbClient.db.collection('ordenes');
-        return await colOrdenes.deleteOne({ _id: new ObjectId(id)});
+        return await OrdenMantenimiento.findOneAndDelete(id);
     }
 
 
