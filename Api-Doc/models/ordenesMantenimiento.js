@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import OrdenMantenimiento from '../schemas/ordenesMantenimiento.js'
 
 class ordenesModelo {
@@ -11,15 +12,15 @@ class ordenesModelo {
     }
 
     async getOne(id) {
-        return await OrdenMantenimiento.findById(id);
+        return await OrdenMantenimiento.findById({_id: new mongoose.Types.ObjectId(id)});
     }
 
     async update(id, orden) {
-        return await OrdenMantenimiento.findOneAndUpdate(id, orden, {new: true});
+        return await OrdenMantenimiento.findOneAndUpdate({_id: new mongoose.Types.ObjectId(id)}, orden, {new: true});
     }
 
     async delete(id) {
-        return await OrdenMantenimiento.findOneAndDelete(id);
+        return await OrdenMantenimiento.findOneAndDelete({_id: new mongoose.Types.ObjectId(id)});
     }
 
 

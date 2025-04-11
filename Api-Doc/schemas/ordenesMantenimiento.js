@@ -4,16 +4,23 @@ const ordenSchema = new mongoose.Schema(
     {
         orden: {
             type: String,
-            require: true
+            required: true,
+            unique: true
         },
         descripcion: {
             type: String,
-            require: true
+            required: true
         },
 
         puestoTrabajo: {
             type: String,
-            require: true
+            required: true,
+            enum: [
+                'DELEENAR',
+                'DMCBENAR',
+                'DMUBENAR',
+                'DMECENAR'
+            ]
         },
 
         revision: {
